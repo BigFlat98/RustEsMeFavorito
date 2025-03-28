@@ -1,0 +1,6 @@
+[package]
+name = "setup_and_basics_01"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

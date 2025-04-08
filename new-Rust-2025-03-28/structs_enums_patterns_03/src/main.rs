@@ -20,7 +20,7 @@ impl Student{
         for i in 0..self.scores.len(){
             match i {
                 0 => {print!("국어: {}",self.scores[i]);
-                    Grade::get_grade(&self.scores[i]).check_grade();
+                    Grade::get_grade(&self.scores[i]).check_grade(); //get_grade 메서드를 인스턴스 생성 없이 바로 썼는데, 마치 자바의 정적 메서드 같음. 러스트에서는 연과 함수라고 부른다고 함.
                 },
                 1 => {print!("수학: {}",self.scores[i]);
                     Grade::get_grade(&self.scores[i]).check_grade();

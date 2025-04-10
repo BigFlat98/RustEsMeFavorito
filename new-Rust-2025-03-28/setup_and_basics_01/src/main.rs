@@ -15,6 +15,21 @@ fn main() {
     let float: f64 = 8.0;
     let boolean: bool = true;
     let character: char = 'R';
+
+    //연산자
+    let sum = x + y;
+    let diff = x - y;
+    let product = x * y;
+    let quotient = x / y;
+    let remainder = x % y;
+
+    println!("합: {}", sum);
+    println!("차: {}", diff);
+    println!("곱: {}", product);
+    println!("몫: {}", quotient);
+    println!("나머지: {}", remainder);
+    
+    
     
     //문자열
     let string = String::from("hello!");

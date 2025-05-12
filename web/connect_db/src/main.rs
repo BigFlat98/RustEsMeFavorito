@@ -165,6 +165,26 @@ async fn delete_post(
     }
 }
 
+//처음 필요한 테이블 생성
+async fn create_table(db: &MySqlPool) -> Result<(), sqlx::Error> {
+    sqlx::query(
+        r#"
+        CREATE TABLE IF NOT EXISTS posts (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            title VARCHAR(255) NOT NULL,
+            content TEXT NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+        )
+        "#
+    )
+    .execute(db)
+    .await?;
+
+    println!("테이블 생성 완료");
+    Ok(())
+}
+
 #[tokio::main]
 async fn main() {
     dotenv().ok();    
@@ -176,19 +196,10 @@ async fn main() {
         .await
         .expect("Failed to connect to DB");
 
-    // 테이블 생성 쿼리 실행
-    sqlx::query(
-        r#"
-        CREATE TABLE IF NOT EXISTS posts (
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            title VARCHAR(255) NOT NULL,
-            content TEXT NOT NULL
-        )
-        "#
-    )
-    .execute(&db)
-    .await
-    .expect("Failed to create table");
+    // 테이블 생성
+    create_table(&db)
+        .await
+        .expect("Failed to create table");
 
     let state = AppState{ db };
     let app = Router::new()

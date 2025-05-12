@@ -4,4 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+sqlx = { version = "0.7", features = ["runtime-tokio", "tls-rustls", "mysql", "macros", "offline"] }
+tokio = { version = "1.0", features = ["full"] }
+dotenvy = "0.15"
 dummy_package_for_check_crate = { path = "../dummy_package_for_check_crate" }

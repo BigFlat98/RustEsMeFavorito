@@ -1,22 +1,14 @@
 <template>
   <div>
-
-    <div class="main-container">
-      <h1>MainView</h1>
-    </div>
-
   </div>
 </template>
 
 <script>
 import { ref, computed } from 'vue';
 
-
-
 export default {
   name: '',
-  components: {
-  },
+  components: {},
   setup() {
     // 반응형 상태
     const state = ref({});
